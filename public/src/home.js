@@ -24,9 +24,11 @@ function getMostCommonGenres(books) {
   for (let i = 0; i < genres.length; i++){
     if (commonGenres.includes(genres[i]) == false){
       commonGenres.push(genres[i])
-      let name = genres[i]
-      let count = 1
-      topFiveObject = {name, count}
+      topFiveObject = commonGenres.reduce((result, genre) => {
+      result.name = genre
+      result.count = 1;
+      return result;
+      }, {}); 
       topFiveGenres.push(topFiveObject)
     } else {
     let found = topFiveGenres.find((genre) => genre.name == genres[i])
@@ -40,6 +42,7 @@ function getMostCommonGenres(books) {
  }
   return topFive
 }
+
 
 function getMostPopularBooks(books) {
   let bookObject = {}
