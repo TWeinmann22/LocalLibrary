@@ -40,7 +40,6 @@ function getBooksPossessedByAccount(account, books, authors) {
       booksCheckedOut = books.filter((book) => book.borrows[0].id == account.id)
     }
   }
-  console.log(booksCheckedOut)
   for (let i = 0; i < booksCheckedOut.length; i++){
     let booksCheckedOutWithAuthorObject = {
       ...booksCheckedOut[i],
