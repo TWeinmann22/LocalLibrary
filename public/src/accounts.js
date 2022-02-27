@@ -37,19 +37,18 @@ function getBooksPossessedByAccount(account, books, authors) {
   let booksCheckedOutWithAuthor = []
   for (let i = 0; i < books.length; i++){
     if (books[i].borrows[0].returned == false){
-      if (books[i].borrows[0].id == account.id){
-       booksCheckedOut.push(books[i])   
-      }
+      booksCheckedOut = books.filter((book) => book.borrows[0].id == account.id)
     }
   }
+  console.log(booksCheckedOut)
   for (let i = 0; i < booksCheckedOut.length; i++){
     let booksCheckedOutWithAuthorObject = {
       ...booksCheckedOut[i],
       author: findAuthorById(authors, booksCheckedOut[i].authorId)
+      
     }
-    booksCheckedOutWithAuthor.push(booksCheckedOutWithAuthorObject)
+booksCheckedOutWithAuthor.push(booksCheckedOutWithAuthorObject)
   }
- 
   return booksCheckedOutWithAuthor
 }
 
